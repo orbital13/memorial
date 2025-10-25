@@ -76,7 +76,7 @@
             height: 100vh;
             background: 
                 linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-                url('21.jpg') center/cover no-repeat;
+                url('fon.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -409,6 +409,26 @@
                     <img src="19.jpg" alt="Служба в Нагорном Карабахе">
                 </div>
             </div>
+
+            <!-- 25.jpg и 26.jpg первыми -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="25.jpg" alt="Дополнительные фото боевого пути">
+                </div>
+                <div class="photo-item">
+                    <img src="26.jpg" alt="Дополнительные фото боевого пути">
+                </div>
+            </div>
+
+            <!-- Затем 23.jpg и 24.jpg -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="23.jpg" alt="Дополнительные фото боевого пути">
+                </div>
+                <div class="photo-item">
+                    <img src="24.jpg" alt="Дополнительные фото боевого пути">
+                </div>
+            </div>
             
             <div class="sports-achievement">
                 <h3>Спортивные достижения</h3>
@@ -430,6 +450,9 @@
                     <img src="22.jpg" alt="Владислав Головин - Герой Российской Федерации">
                 </div>
             </div>
+
+            <!-- 28.jpg добавлен после 22.jpg -->
+            <img src="28.jpg" alt="Дополнительное фото боевого пути" class="content-photo">
             
             <p>Гвардии младший лейтенант Бельтюков Алексей Владимирович служил командиром взвода огневой поддержки штурмовой роты 382 отдельного батальона морской пехоты.</p>
             
@@ -438,11 +461,11 @@
                 <p>13 августа 2024 года в районе поселения Крупец Курской области, выполнив поставленную задачу и возвращаясь в исходный район, подвергся обстрелу диверсионной разведывательной группой противника.</p>
                 <p>Получил огнестрельное ранение, несовместимое с жизнью.</p>
             </div>
+
+            <!-- 27.jpg добавлен после раздела "Гибель героя" -->
+            <img src="27.jpg" alt="Памятное фото" class="content-photo">
             
             <p>Алексей до конца оставался верен воинскому долгу и своим товарищам, проявив мужество и героизм при выполнении боевой задачи.</p>
-            
-            <img src="4.jpg" alt="Служба в морской пехоте" class="content-photo">
-            <p class="photo-caption">382 отдельный батальон морской пехоты</p>
         </div>
     </section>
 
@@ -510,11 +533,20 @@
                     <img src="24.jpg" alt="Правительственные награды">
                 </div>
             </div>
+
+            <!-- Добавлены 25.jpg и 26.jpg в Награды -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="25.jpg" alt="Дополнительные награды">
+                </div>
+                <div class="photo-item">
+                    <img src="26.jpg" alt="Дополнительные награды">
+                </div>
+            </div>
             
             <p>Эта высокая награда - свидетельство его беззаветной преданности Родине и воинскому долгу.</p>
             
-            <img src="5.jpg" alt="Орден Мужества" class="content-photo">
-            <p class="photo-caption">Орден Мужества</p>
+            <!-- 5.jpg убрано из раздела Награды -->
         </div>
     </section>
 
@@ -522,7 +554,10 @@
     <section id="gallery" class="gallery-section">
         <h2 class="section-title">Памятный альбом</h2>
         <div class="gallery-grid">
-            <!-- Оставшиеся фотографии от 6.jpg до 15.jpg и от 25.jpg до 27.jpg -->
+            <!-- Оставшиеся фотографии от 4.jpg, 6.jpg до 15.jpg и от 25.jpg до 28.jpg -->
+            <div class="gallery-item">
+                <img src="4.jpg" alt="Служба в морской пехоте">
+            </div>
             <div class="gallery-item">
                 <img src="6.jpg" alt="Фото 6">
             </div>
@@ -549,6 +584,9 @@
             </div>
             <div class="gallery-item">
                 <img src="27.jpg" alt="Фото 27">
+            </div>
+            <div class="gallery-item">
+                <img src="28.jpg" alt="Фото 28">
             </div>
         </div>
     </section>
