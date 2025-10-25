@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вечная память | Бельтюков Алексей Владимирович</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #333;
+            background: #000;
+            overflow-x: hidden;
+        }
+
+        /* Навигационное меню - прозрачное с высотой 5vh */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            height: 5vh;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            background: rgba(231, 76, 60, 0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        /* Главная страница с фоном */
+        .hero-main {
+            position: relative;
+            height: 100vh;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+                url('21.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            padding-bottom: 5vh;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            margin-bottom: 5vh;
+        }
+
+        .hero-name {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            animation: fadeInOut 6s ease-in-out infinite;
+        }
+
+        .hero-dates {
+            font-size: 2rem;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            animation: fadeInOut 6s ease-in-out infinite;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        /* Основной контент */
+        .content-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 0.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .heroic-death {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .heroic-death h3 {
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        .content-photo {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 1.5rem auto;
+            display: block;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .photo-caption {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .photos-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .photo-item {
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .award-item {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .award-title {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .award-description {
+            color: #666;
+            font-style: italic;
+        }
+
+        .sports-achievement {
+            background: #f0f8ff;
+            border-left: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .sports-achievement h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+
+        /* Стили для галереи */
+        .gallery-section {
+            background: white;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .gallery-section.active {
+            display: block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Футер */
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 2.5rem;
+            }
+            
+            .hero-dates {
+                font-size: 1.5rem;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                gap: 0.8rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .nav-item a {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .content-section,
+            .gallery-section {
+                padding: 2rem 1rem;
+                margin: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .photos-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                min-height: 35px;
+            }
+            
+            .nav-menu {
+                gap: 0.5rem;
+                padding: 0.3rem 0.8rem;
+            }
+            
+            .nav-item a {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигационное меню - прозрачное с высотой 5vh -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#combat" class="nav-link active" onclick="showSection('combat')">Боевой путь</a></li>
+                <li class="nav-item"><a href="#bio" class="nav-link" onclick="showSection('bio')">Биография</a></li>
+                <li class="nav-item"><a href="#awards" class="nav-link" onclick="showSection('awards')">Награды</a></li>
+                <li class="nav-item"><a href="#gallery" class="nav-link" onclick="showSection('gallery')">Памятный альбом</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Главная страница с фоном -->
+    <section class="hero-main" id="main">
+        <div class="hero-content">
+            <h1 class="hero-name">Бельтюков Алексей Владимирович</h1>
+            <p class="hero-dates">08.09.1991 - 13.08.2024</p>
+        </div>
+    </section>
+
+    <!-- Раздел Боевой путь -->
+    <section id="combat" class="content-section active">
+        <h2 class="section-title">Боевой путь</h2>
+        <div class="bio-text">
+            <p>16 ноября 2010 года Алексей был призван на срочную службу в ряды Вооруженных Сил Российской Федерации.</p>
+            
+            <p>Проходил срочную службу в городе Севастополе в воинской части 81401.</p>
+            
+            <img src="11.jpg" alt="Срочная служба в Севастополе" class="content-photo">
+            
+            <p>30 июля 2012 года поступил на военную службу по контракту в воинскую часть 6761 города Армавира.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="12.jpg" alt="Служба по контракту в Армавире">
+                </div>
+                <div class="photo-item">
+                    <img src="13.jpg" alt="Военная служба">
+                </div>
+            </div>
+            
+            <p>В 2013 году получил удостоверение «Ветеран боевых действий».</p>
+            
+            <img src="14.jpg" alt="Удостоверение ветерана боевых действий" class="content-photo">
+            
+            <p>16 октября 2015 года поступил по контракту на военную службу в воинскую часть 45765.</p>
+            
+            <p>Принимал участие в военной операции в Сирии.</p>
+            
+            <p>Принимал участие в миротворческой миссии в Нагорном Карабахе.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="18.jpg" alt="Миротворческая миссия в Нагорном Карабахе">
+                </div>
+                <div class="photo-item">
+                    <img src="19.jpg" alt="Служба в Нагорном Карабахе">
+                </div>
+            </div>
+            
+            <div class="sports-achievement">
+                <h3>Спортивные достижения</h3>
+                <p>27 декабря 2021 года приказом № 1899 Алексею присвоена квалификация спортсмена первого разряда кандидата в мастера спорта России.</p>
+                <img src="20.jpg" alt="Спортивные достижения" class="content-photo">
+            </div>
+            
+            <p>С первого дня Алексей принимал участие в военной операции на Украине.</p>
+            
+            <p>Активно участвовал в освобождении города Мариуполя в составе десантно-штурмовой роты 382 отдельного батальона морской пехоты под командованием Владислава Головина (позывной "Струна").</p>
+            
+            <p>20 сентября 2022 года Владиславу Головину было присвоено звание Героя Российской Федерации.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="21.jpg" alt="Участие в операции на Украине">
+                </div>
+                <div class="photo-item">
+                    <img src="22.jpg" alt="Владислав Головин - Герой Российской Федерации">
+                </div>
+            </div>
+            
+            <p>Гвардии младший лейтенант Бельтюков Алексей Владимирович служил командиром взвода огневой поддержки штурмовой роты 382 отдельного батальона морской пехоты.</p>
+            
+            <div class="heroic-death">
+                <h3>Гибель героя</h3>
+                <p>13 августа 2024 года в районе поселения Крупец Курской области, выполнив поставленную задачу и возвращаясь в исходный район, подвергся обстрелу диверсионной разведывательной группой противника.</p>
+                <p>Получил огнестрельное ранение, несовместимое с жизнью.</p>
+            </div>
+            
+            <p>Алексей до конца оставался верен воинскому долгу и своим товарищам, проявив мужество и героизм при выполнении боевой задачи.</p>
+            
+            <img src="4.jpg" alt="Служба в морской пехоте" class="content-photo">
+            <p class="photo-caption">382 отдельный батальон морской пехоты</p>
+        </div>
+    </section>
+
+    <!-- Раздел Биография -->
+    <section id="bio" class="content-section">
+        <h2 class="section-title">Биография</h2>
+        <div class="bio-text">
+            <p>Бельтюков Алексей Владимирович родился 8 сентября 1991 года в селе Унароково Мостовского района.</p>
+            
+            <p>Рос в семье преподавателя Бельтюкова Владимира Викторовича и заведующей сельской библиотекой Ларисы Вячеславовны.</p>
+            
+            <p>Его родители родом из города Лабинска, с которым связаны многие семейные истории и традиции.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="1.jpg" alt="Село Унароково">
+                </div>
+                <div class="photo-item">
+                    <img src="2.jpg" alt="Семья Бельтюковых">
+                </div>
+                <div class="photo-item">
+                    <img src="3.jpg" alt="Город Лабинск">
+                </div>
+            </div>
+            
+            <p>С детства Алексей проявлял интерес к истории и литературе, что во многом было связано с профессией его матери, работавшей в библиотеке.</p>
+            
+            <p>Отец, Владимир Викторович, будучи преподавателем, прививал Алексею любовь к знаниям и уважение к образованию.</p>
+            
+            <p>26 июля 2014 года Алексей женился.</p>
+            
+            <p>10 января 2016 года родилась дочь София.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="16.jpg" alt="Семейная жизнь">
+                </div>
+                <div class="photo-item">
+                    <img src="17.jpg" alt="Дочь София">
+                </div>
+            </div>
+            
+            <p>В 2021 году поступил в Армавирский государственный педагогический университет.</p>
+        </div>
+    </section>
+
+    <!-- Раздел Награды -->
+    <section id="awards" class="content-section">
+        <h2 class="section-title">Награды и достижения</h2>
+        <div class="bio-text">
+            <div class="award-item">
+                <div class="award-title">Орден Мужества</div>
+                <div class="award-description">Посмертно. За мужество и героизм, проявленные при выполнении боевой задачи.</div>
+            </div>
+            
+            <p>Алексей Бельтюков награждён орденом Мужества посмертно за проявленные стойкость, мужество и героизм в бою с диверсионно-разведывательной группой противника.</p>
+            
+            <p>За этот период имел правительственные награды.</p>
+            
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="23.jpg" alt="Правительственные награды">
+                </div>
+                <div class="photo-item">
+                    <img src="24.jpg" alt="Правительственные награды">
+                </div>
+            </div>
+            
+            <p>Эта высокая награда - свидетельство его беззаветной преданности Родине и воинскому долгу.</p>
+            
+            <img src="5.jpg" alt="Орден Мужества" class="content-photo">
+            <p class="photo-caption">Орден Мужества</p>
+        </div>
+    </section>
+
+    <!-- Раздел Памятный альбом -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Памятный альбом</h2>
+        <div class="gallery-grid">
+            <!-- Оставшиеся фотографии от 6.jpg до 15.jpg и от 25.jpg до 27.jpg -->
+            <div class="gallery-item">
+                <img src="6.jpg" alt="Фото 6">
+            </div>
+            <div class="gallery-item">
+                <img src="7.jpg" alt="Фото 7">
+            </div>
+            <div class="gallery-item">
+                <img src="8.jpg" alt="Фото 8">
+            </div>
+            <div class="gallery-item">
+                <img src="9.jpg" alt="Фото 9">
+            </div>
+            <div class="gallery-item">
+                <img src="10.jpg" alt="Фото 10">
+            </div>
+            <div class="gallery-item">
+                <img src="15.jpg" alt="Фото 15">
+            </div>
+            <div class="gallery-item">
+                <img src="25.jpg" alt="Фото 25">
+            </div>
+            <div class="gallery-item">
+                <img src="26.jpg" alt="Фото 26">
+            </div>
+            <div class="gallery-item">
+                <img src="27.jpg" alt="Фото 27">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Вечная память Бельтюкову Алексею Владимировичу</p>
+            <p>08.09.1991 - 13.08.2024 | Помним, гордимся, чтим</p>
+        </div>
+    </footer>
+
+    <script>
+        // Функция для переключения разделов
+        function showSection(sectionId) {
+            // Скрываем все разделы
+            document.querySelectorAll('.content-section, .gallery-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Показываем выбранный раздел
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Обновляем активное состояние в меню
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
+            
+            // Прокручиваем к разделу (кроме главной страницы)
+            if (sectionId !== 'main') {
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Плавное изменение меню при скролле
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (window.scrollY > 100) {
+                // При скролле делаем меню более заметным
+                navMenu.style.background = 'rgba(255, 255, 255, 0.15)';
+                navMenu.style.backdropFilter = 'blur(15px)';
+            } else {
+                // В верхней части - более прозрачное
+                navMenu.style.background = 'rgba(255, 255, 255, 0.1)';
+                navMenu.style.backdropFilter = 'blur(10px)';
+            }
+        });
+    </script>
+</body>
+</html>
