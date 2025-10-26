@@ -168,6 +168,12 @@
             margin: 1.5rem auto;
             display: block;
             box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .content-photo:hover {
+            transform: scale(1.02);
         }
 
         .photo-caption {
@@ -198,6 +204,12 @@
             height: auto;
             border-radius: 8px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.03);
         }
 
         .award-item {
@@ -263,6 +275,7 @@
             height: 250px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .gallery-item:hover {
@@ -279,6 +292,53 @@
 
         .gallery-item:hover img {
             transform: scale(1.05);
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #e74c3c;
         }
 
         /* Футер */
@@ -330,6 +390,17 @@
                 align-items: center;
                 gap: 1rem;
             }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+
+            .close {
+                top: 10px;
+                right: 20px;
+                font-size: 30px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -378,22 +449,22 @@
             
             <p>Проходил срочную службу в городе Севастополе в воинской части 81401.</p>
             
-            <img src="11.jpg" alt="Срочная служба в Севастополе" class="content-photo">
+            <img src="11.jpg" alt="Срочная служба в Севастополе" class="content-photo" onclick="openModal(this)">
             
             <p>30 июля 2012 года поступил на военную службу по контракту в воинскую часть 6761 города Армавира.</p>
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="12.jpg" alt="Служба по контракту в Армавире">
+                    <img src="12.jpg" alt="Служба по контракту в Армавире" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="13.jpg" alt="Военная служба">
+                    <img src="13.jpg" alt="Военная служба" onclick="openModal(this)">
                 </div>
             </div>
             
             <p>В 2013 году получил удостоверение «Ветеран боевых действий».</p>
             
-            <img src="14.jpg" alt="Удостоверение ветерана боевых действий" class="content-photo">
+            <img src="14.jpg" alt="Удостоверение ветерана боевых действий" class="content-photo" onclick="openModal(this)">
             
             <p>16 октября 2015 года поступил по контракту на военную службу в воинскую часть 45765.</p>
             
@@ -403,37 +474,45 @@
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="18.jpg" alt="Миротворческая миссия в Нагорном Карабахе">
+                    <img src="18.jpg" alt="Миротворческая миссия в Нагорном Карабахе" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="19.jpg" alt="Служба в Нагорном Карабахе">
+                    <img src="19.jpg" alt="Служба в Нагорном Карабахе" onclick="openModal(this)">
                 </div>
             </div>
 
             <!-- 25.jpg и 26.jpg первыми -->
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="25.jpg" alt="Дополнительные фото боевого пути">
+                    <img src="25.jpg" alt="Дополнительные фото боевого пути" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="26.jpg" alt="Дополнительные фото боевого пути">
+                    <img src="26.jpg" alt="Дополнительные фото боевого пути" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <!-- 29.jpg - медаль за взятие Мариуполя -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="29.jpg" alt="Медаль за взятие Мариуполя" onclick="openModal(this)">
+                    <p class="photo-caption">Медаль за взятие Мариуполя</p>
                 </div>
             </div>
 
             <!-- Затем 23.jpg и 24.jpg -->
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="23.jpg" alt="Дополнительные фото боевого пути">
+                    <img src="23.jpg" alt="Дополнительные фото боевого пути" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="24.jpg" alt="Дополнительные фото боевого пути">
+                    <img src="24.jpg" alt="Дополнительные фото боевого пути" onclick="openModal(this)">
                 </div>
             </div>
             
             <div class="sports-achievement">
                 <h3>Спортивные достижения</h3>
                 <p>27 декабря 2021 года приказом № 1899 Алексею присвоена квалификация спортсмена первого разряда кандидата в мастера спорта России.</p>
-                <img src="20.jpg" alt="Спортивные достижения" class="content-photo">
+                <img src="20.jpg" alt="Спортивные достижения" class="content-photo" onclick="openModal(this)">
             </div>
             
             <p>С первого дня Алексей принимал участие в военной операции на Украине.</p>
@@ -444,15 +523,15 @@
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="21.jpg" alt="Участие в операции на Украине">
+                    <img src="21.jpg" alt="Участие в операции на Украине" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="22.jpg" alt="Владислав Головин - Герой Российской Федерации">
+                    <img src="22.jpg" alt="Владислав Головин - Герой Российской Федерации" onclick="openModal(this)">
                 </div>
             </div>
 
             <!-- 28.jpg добавлен после 22.jpg -->
-            <img src="28.jpg" alt="Дополнительное фото боевого пути" class="content-photo">
+            <img src="28.jpg" alt="Дополнительное фото боевого пути" class="content-photo" onclick="openModal(this)">
             
             <p>Гвардии младший лейтенант Бельтюков Алексей Владимирович служил командиром взвода огневой поддержки штурмовой роты 382 отдельного батальона морской пехоты.</p>
             
@@ -463,7 +542,7 @@
             </div>
 
             <!-- 27.jpg добавлен после раздела "Гибель героя" -->
-            <img src="27.jpg" alt="Памятное фото" class="content-photo">
+            <img src="27.jpg" alt="Памятное фото" class="content-photo" onclick="openModal(this)">
             
             <p>Алексей до конца оставался верен воинскому долгу и своим товарищам, проявив мужество и героизм при выполнении боевой задачи.</p>
         </div>
@@ -481,13 +560,13 @@
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="1.jpg" alt="Село Унароково">
+                    <img src="1.jpg" alt="Село Унароково" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="2.jpg" alt="Семья Бельтюковых">
+                    <img src="2.jpg" alt="Семья Бельтюковых" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="3.jpg" alt="Город Лабинск">
+                    <img src="3.jpg" alt="Город Лабинск" onclick="openModal(this)">
                 </div>
             </div>
             
@@ -501,10 +580,10 @@
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="16.jpg" alt="Семейная жизнь">
+                    <img src="16.jpg" alt="Семейная жизнь" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="17.jpg" alt="Дочь София">
+                    <img src="17.jpg" alt="Дочь София" onclick="openModal(this)">
                 </div>
             </div>
             
@@ -516,37 +595,64 @@
     <section id="awards" class="content-section">
         <h2 class="section-title">Награды и достижения</h2>
         <div class="bio-text">
-            <div class="award-item">
-                <div class="award-title">Орден Мужества</div>
-                <div class="award-description">Посмертно. За мужество и героизм, проявленные при выполнении боевой задачи.</div>
+            <!-- Добавлены новые фотографии в начало -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="12.jpg" alt="Служба по контракту в Армавире" onclick="openModal(this)">
+                </div>
+                <div class="photo-item">
+                    <img src="14.jpg" alt="Удостоверение ветерана боевых действий" onclick="openModal(this)">
+                </div>
             </div>
-            
-            <p>Алексей Бельтюков награждён орденом Мужества посмертно за проявленные стойкость, мужество и героизм в бою с диверсионно-разведывательной группой противника.</p>
-            
-            <p>За этот период имел правительственные награды.</p>
             
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="23.jpg" alt="Правительственные награды">
+                    <img src="15.jpg" alt="Дополнительные фото" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="24.jpg" alt="Правительственные награды">
+                    <img src="18.jpg" alt="Миротворческая миссия в Нагорном Карабахе" onclick="openModal(this)">
+                </div>
+                <div class="photo-item">
+                    <img src="19.jpg" alt="Служба в Нагорном Карабахе" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="23.jpg" alt="Правительственные награды" onclick="openModal(this)">
+                </div>
+                <div class="photo-item">
+                    <img src="24.jpg" alt="Правительственные награды" onclick="openModal(this)">
+                </div>
+            </div>
+
+            <!-- Добавлена медаль за взятие Мариуполя -->
+            <div class="photos-row">
+                <div class="photo-item">
+                    <img src="29.jpg" alt="Медаль за взятие Мариуполя" onclick="openModal(this)">
+                    <p class="photo-caption">Медаль за взятие Мариуполя</p>
                 </div>
             </div>
 
             <!-- Добавлены 25.jpg и 26.jpg в Награды -->
             <div class="photos-row">
                 <div class="photo-item">
-                    <img src="25.jpg" alt="Дополнительные награды">
+                    <img src="25.jpg" alt="Дополнительные награды" onclick="openModal(this)">
                 </div>
                 <div class="photo-item">
-                    <img src="26.jpg" alt="Дополнительные награды">
+                    <img src="26.jpg" alt="Дополнительные награды" onclick="openModal(this)">
                 </div>
             </div>
             
             <p>Эта высокая награда - свидетельство его беззаветной преданности Родине и воинскому долгу.</p>
+
+            <!-- Орден Мужества и текст о награждении в самом низу -->
+            <div class="award-item">
+                <div class="award-title">Орден Мужества</div>
+                <div class="award-description">Посмертно. За мужество и героизм, проявленные при выполнении боевой задачи.</div>
+            </div>
             
-            <!-- 5.jpg убрано из раздела Награды -->
+            <p>Алексей Бельтюков награждён орденом Мужества посмертно за проявленные стойкость, мужество и героизм в бою с диверсионно-разведывательной группой противника.</p>
         </div>
     </section>
 
@@ -554,42 +660,45 @@
     <section id="gallery" class="gallery-section">
         <h2 class="section-title">Памятный альбом</h2>
         <div class="gallery-grid">
-            <!-- Оставшиеся фотографии от 4.jpg, 6.jpg до 15.jpg и от 25.jpg до 28.jpg -->
+            <!-- Убраны 15.jpg, 25.jpg, 24.jpg, 19.jpg -->
             <div class="gallery-item">
-                <img src="4.jpg" alt="Служба в морской пехоте">
+                <img src="4.jpg" alt="Служба в морской пехоте" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="6.jpg" alt="Фото 6">
+                <img src="6.jpg" alt="Фото 6" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="7.jpg" alt="Фото 7">
+                <img src="7.jpg" alt="Фото 7" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="8.jpg" alt="Фото 8">
+                <img src="8.jpg" alt="Фото 8" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="9.jpg" alt="Фото 9">
+                <img src="9.jpg" alt="Фото 9" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="10.jpg" alt="Фото 10">
+                <img src="10.jpg" alt="Фото 10" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="15.jpg" alt="Фото 15">
+                <img src="26.jpg" alt="Фото 26" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="25.jpg" alt="Фото 25">
+                <img src="27.jpg" alt="Фото 27" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="26.jpg" alt="Фото 26">
+                <img src="28.jpg" alt="Фото 28" onclick="openModal(this)">
             </div>
             <div class="gallery-item">
-                <img src="27.jpg" alt="Фото 27">
-            </div>
-            <div class="gallery-item">
-                <img src="28.jpg" alt="Фото 28">
+                <img src="29.jpg" alt="Медаль за взятие Мариуполя" onclick="openModal(this)">
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно для просмотра изображений -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -637,6 +746,35 @@
                 navMenu.style.backdropFilter = 'blur(10px)';
             }
         });
+
+        // Функции для модального окна
+        function openModal(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            
+            // Добавляем обработчик для закрытия по клику вне изображения
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Добавляем обработчик для закрытия по клавише Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+            
+            // Удаляем обработчики событий
+            document.removeEventListener('keydown', arguments.callee);
+        }
     </script>
 </body>
 </html>
